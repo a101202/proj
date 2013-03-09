@@ -5,10 +5,6 @@
 #include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
-<<<<<<< HEAD
-#include <vector>
-=======
->>>>>>> 692a2d374100680bbe7a235ce4bd9b8392c92166
 
 using namespace std;
 
@@ -28,8 +24,10 @@ using namespace std;
 constexpr int EndOfFile = -1;
 
 // given hex digit character c, return its value
-int HexCharToValue(int c) {
-	switch (c) {
+int HexCharToValue(int c)
+{
+	switch (c)
+	{
 	case '0': return 0;
 	case '1': return 1;
 	case '2': return 2;
@@ -57,7 +55,8 @@ int HexCharToValue(int c) {
 }
 
 // See C++ standard 2.11 Identifiers and Appendix/Annex E.1
-const vector<pair<int, int>> AnnexE1_Allowed_RangesSorted = {
+const vector<pair<int, int>> AnnexE1_Allowed_RangesSorted =
+{
 	{0xA8,0xA8},
 	{0xAA,0xAA},
 	{0xAD,0xAD},
@@ -106,7 +105,8 @@ const vector<pair<int, int>> AnnexE1_Allowed_RangesSorted = {
 };
 
 // See C++ standard 2.11 Identifiers and Appendix/Annex E.2
-const vector<pair<int, int>> AnnexE2_DisallowedInitially_RangesSorted = {
+const vector<pair<int, int>> AnnexE2_DisallowedInitially_RangesSorted =
+{
 	{0x300,0x36F},
 	{0x1DC0,0x1DFF},
 	{0x20D0,0x20FF},
@@ -114,31 +114,38 @@ const vector<pair<int, int>> AnnexE2_DisallowedInitially_RangesSorted = {
 };
 
 // See C++ standard 2.13 Operators and punctuators
-const unordered_set<string> Digraph_IdentifierLike_Operators = {
+const unordered_set<string> Digraph_IdentifierLike_Operators =
+{
 	"new", "delete", "and", "and_eq", "bitand",
 	"bitor", "compl", "not", "not_eq", "or",
 	"or_eq", "xor", "xor_eq"
 };
 
 // See `simple-escape-sequence` grammar
-const unordered_set<int> SimpleEscapeSequence_CodePoints = {
+const unordered_set<int> SimpleEscapeSequence_CodePoints =
+{
 	'\'', '"', '?', '\\', 'a', 'b', 'f', 'n', 'r', 't', 'v'
 };
 
 // Tokenizer
-struct PPTokenizer {
+struct PPTokenizer
+{
 	IPPTokenStream& output;
 
-	PPTokenizer(IPPTokenStream& output) : output(output) {}
+	PPTokenizer(IPPTokenStream& output)
+		: output(output)
+	{}
 
-	void process(int c) {
+	void process(int c)
+	{
 		// TODO:  Your code goes here.
 
 		// 1. do translation features
 		// 2. tokenize resulting stream
 		// 3. call an output.emit_* function for each token.
 
-		if (c == EndOfFile) {
+		if (c == EndOfFile)
+		{
 			output.emit_identifier("not_yet_implemented");
 			output.emit_eof();
 		}
@@ -149,21 +156,10 @@ struct PPTokenizer {
 	}
 };
 
-int main() {
-<<<<<<< HEAD
-	/*for(vector<pair<int, int>>::iterator it = AnnexE1_Allowed_RangesSorted.begin();
-		it != AnnexE1_Allowed_RangesSorted.end(); it++){
-			cout<<it->first<<" .. "<<it->second<<endl;
-	}*/
-=======
-	for(vector<pair<int, int>>::iterator it = AnnexE1_Allowed_RangesSorted.begin();
-		it != AnnexE1_Allowed_RangesSorted.end(); it++){
-			cout<<it->first<<" .. "<<it->second<<endl;
-	}
->>>>>>> 692a2d374100680bbe7a235ce4bd9b8392c92166
-	
-	try {
-		//freopen("input.txt", "r", stdin);
+int main()
+{
+	try
+	{
 		ostringstream oss;
 		oss << cin.rdbuf();
 
@@ -173,16 +169,17 @@ int main() {
 
 		PPTokenizer tokenizer(output);
 
-		for (char c : input) {
+		for (char c : input)
+		{
 			unsigned char code_unit = c;
 			tokenizer.process(code_unit);
 		}
 
 		tokenizer.process(EndOfFile);
 	}
-	catch (exception& e) {
+	catch (exception& e)
+	{
 		cerr << "ERROR: " << e.what() << endl;
 		return EXIT_FAILURE;
 	}
 }
-
