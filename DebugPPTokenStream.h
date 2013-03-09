@@ -3,6 +3,8 @@
 #pragma once
 
 #include "IPPTokenStream.h"
+#include "string.h"
+#include "string"
 
 struct DebugPPTokenStream : IPPTokenStream
 {
@@ -71,7 +73,10 @@ private:
 	void write_token(const string& type, const string& data)
 	{
 		cout << type << " " << data.size() << " ";
-		cout.write(data.data(), data.size());
+		long t = data.size();
+		const char *a = data.data();
+		cout<<"del it!"<<endl;
+		//cout.write(a, t); TODO
 		cout << endl;
 	}
 };
